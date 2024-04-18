@@ -1,0 +1,16 @@
+{
+  "name": "clase1",
+  "version": "1.0.0",
+  "description": "Ejercicios que voy a realizar para reforzar aprendizaje",
+  "main": "js/main.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node js/main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "async-prompt": "^1.0.1"
+  }
+}
