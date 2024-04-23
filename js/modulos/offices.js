@@ -26,3 +26,11 @@ export const getAllOficceCityAndMobile = async()=>{
 } 
 
 
+//parte de la segunda parte
+
+export const getOfficesByCode = async (code) => {
+    let res = await fetch(`http://localhost:5504/offices?code_office=${code}`);
+    let data = await res.json();
+    return data
+}
+

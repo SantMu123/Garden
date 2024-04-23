@@ -1,3 +1,4 @@
+//7
 export const getAllPossibleStatus = async()=>{
     let res = await fetch("http://localhost:5508/requests")
     let data = await res.json();
