@@ -17,8 +17,6 @@ export const getAllEspanishClients = async()=>{
     return dataUpdate
 } 
 
-
-
 //16
 
 export const getAllClients = async()=>{

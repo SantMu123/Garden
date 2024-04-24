@@ -8,7 +8,7 @@ console.log(await postProfile(name));
 import {getAllOficceAndCodeCity, getAllOficceCityAndMobile} from "./modulos/offices.js"
 import {getAllFullNameAndEmailsAndBoss, getBoss} from "./modulos/employees.js"
 import {getAllEspanishClients, getAll} from "./modulos/clients.js"
-import {getAllPossibleStatus} from "./modulos/Request.js"
+import {getAllPossibleStatus, getAllRejectedDeliver, getAllRejectedDeliverTwoDays} from "./modulos/Request.js"
 import {getAllClientsUniques} from "./modulos/payments.js"
 //import { getAll } from "./modulos/payments.js"
 //import {getAllClients, getAllClientsFromCityAndCode} from "./modulos/clients.js"
@@ -23,4 +23,6 @@ import {getAllClientsUniques} from "./modulos/payments.js"
 
 //console.log(await getAll())
 
-console.log(await getAllClientsUniques())
+//console.log(await getAllClientsUniques())
+//console.log(await getAllRejectedDeliver())
+console.log(await getAllRejectedDeliverTwoDays())
