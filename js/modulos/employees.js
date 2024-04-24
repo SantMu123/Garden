@@ -34,9 +34,34 @@ export const getBoss = async () => {
     return dataUpdate;
 };
 
+//5 Empleados que no sean representante de ventas
+export const getAllNotSalesRepresentEmployee = async () => {
+    let res = await fetch("http://localhost:5502/employee");
+    let data = await res.json();
+    let dataUpdate = []
+    data.forEach(val => {
+        if(val.position != "Representante Ventas"){
+            dataUpdate.push({
+                position: val.position,
+                name: val.name,
+                fullLastname: `${val.lastname1} ${val.lastname2}`,
+            });
+        }    
+    });
+    return dataUpdate;
+};
+
 //obtener toda la informacion de un empleado por codigo
 
 export const getEmployeesByCode = async (code) => {
+    let res = await fetch(`http://localhost:5502/employee?employee_code=${code}`);
+    let data = await res.json(); 
+    return data
+}
+
+//Parte ejercicio 1:
+
+export const getEmployeesByIdCode = async (code) => {
     let res = await fetch(`http://localhost:5502/employee?employee_code=${code}`);
     let data = await res.json(); 
     return data

@@ -56,3 +56,22 @@ export const getAllRejectedDeliverTwoDays = async()=>{
     }));
     return delivering;
 }
+//11
+
+export const getAllRejectedDeliverInYears = async()=>{
+    let res = await fetch("http://localhost:5508/requests?status=Rechazado");
+    let data = await res.json();
+    let dataUpdate = []
+    data.forEach(val => {
+        let [year] = val.date_request.split("-")
+        if(year == "2008"){
+            dataUpdate.push(val)
+        } 
+    })
+    return dataUpdate
+}
+
+
+
+
+

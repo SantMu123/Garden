@@ -6,10 +6,11 @@ let name = await prompt("Ingrese el nombre: ");
 console.log(await postProfile(name));
 */
 import {getAllOficceAndCodeCity, getAllOficceCityAndMobile} from "./modulos/offices.js"
-import {getAllFullNameAndEmailsAndBoss, getBoss} from "./modulos/employees.js"
-import {getAllEspanishClients, getAll} from "./modulos/clients.js"
-import {getAllPossibleStatus, getAllRejectedDeliver, getAllRejectedDeliverTwoDays} from "./modulos/Request.js"
-import {getAllClientsUniques} from "./modulos/payments.js"
+import {getAllFullNameAndEmailsAndBoss, getBoss, getAllNotSalesRepresentEmployee} from "./modulos/employees.js"
+import {getAllEspanishClients, getAll, getAllClientsWithSalesManagerName, getAllClientsWithPaymensAndSalesManagmentInfo, getAllAdressOfficesFunlabrada} from "./modulos/clients.js"
+import {getAllPossibleStatus, getAllRejectedDeliver, getAllRejectedDeliverTwoDays, getAllRejectedDeliverInYears } from "./modulos/Request.js" //2009
+import {getAllClientsUniques, getAllPaymentsWays, getAllClientsWithNotPaymentsWithManagersSales} from "./modulos/payments.js"
+import {getAllOrnamentalsAndStockProducts} from "./modulos/product.js"
 //import { getAll } from "./modulos/payments.js"
 //import {getAllClients, getAllClientsFromCityAndCode} from "./modulos/clients.js"
 //console.log(await getAllOficceAndCodeCity());
@@ -25,4 +26,18 @@ import {getAllClientsUniques} from "./modulos/payments.js"
 
 //console.log(await getAllClientsUniques())
 //console.log(await getAllRejectedDeliver())
-console.log(await getAllRejectedDeliverTwoDays())
+//console.log(await getAllRejectedDeliverTwoDays())
+
+//console.log(await getAllNotSalesRepresentEmployee())
+
+//console.log(await getAllRejectedDeliverInYears())
+
+//console.log(await getAllPaymentsWays())
+
+//console.log(await getAllOrnamentalsAndStockProducts())
+
+//console.log(await getAllClientsWithSalesManagerName())
+//console.log(await getAllClientsWithPaymensAndSalesManagmentInfo())
+//console.log(await getAllClientsWithNotPaymentsWithManagersSales())
+
+console.log(await getAllAdressOfficesFunlabrada())

@@ -1,4 +1,4 @@
-//devolver el listadi con el codigo de oficina y la ciudad 
+//1 devolver el listadi con el codigo de oficina y la ciudad 
 //donde hay oficinas
 export const getAllOficceAndCodeCity = async() => {
     let res = await fetch("http://localhost:5504/offices?city")//investigar como filtrsar desde el link
