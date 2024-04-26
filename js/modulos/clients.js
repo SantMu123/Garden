@@ -352,13 +352,42 @@ export const getAllCostumersWithGamas = async()=>{
                 code_client: code_client.code_client,
                 client_name: uniqueClients[i].contact_name,
                 code_requests: code_client.codes_requests
-                
             }
         } else {
             uniqueClients.splice(i, 1);
         }
+    }
+    var AllCodeRequestsLength = []
+    for(let i = 0; i<uniqueClients.length; i++){
+        AllCodeRequestsLength.push(uniqueClients[i].code_requests)
+    }
+    var nuevo = new Set()
+    for(let i = 0; i<AllCodeRequestsLength.length; i++){
+        for(let j = 0; j<AllCodeRequestsLength[i].length; j++){
+            var requestsDetails = await getAllRequestDetails(AllCodeRequestsLength[i][j])
+            nuevo.add(requestsDetails.product_code)
+            uniqueClients[i]["single_code_request"] = requestsDetails.code_request
+    
+            continue
+        }
+        uniqueClients[i]["products"] = [...nuevo]
+        nuevo = new Set()    
+    }
+    
+    for(let i = 0; i<uniqueClients.length; i++){
+        var uniqueInitials = new Set();
+        // Recorrer el array de productos y agregar las iniciales al conjunto
+        uniqueClients.products.forEach(subArray => {
+            subArray.forEach(initial => {
+                uniqueInitials.add(initial);
+            });
+        });
+        uniqueClients.products = Array.from(uniqueInitials);
+    }
+    
+    return uniqueClients;
         
-
+        /*
         var AllCodeRequestsLength = []
         for(let i = 0; i<uniqueClients.length; i++){
             AllCodeRequestsLength.push(uniqueClients[i].code_requests)
@@ -367,9 +396,8 @@ export const getAllCostumersWithGamas = async()=>{
         }
         
         /*
-        
-        for(let i = 0; i<uniqueClients.length; i++){
-            for(let j of uniqueClients.code_requests){
+        for(let i = 0; i<AllCodeRequestsLength.length; i++){
+            for(let j of AllCodeRequestsLength[i]){
                 let requestsDetails = await getAllRequestDetails(j)
                 uniqueClients[i] = {
                     code_client: code_client.code_client,
@@ -378,13 +406,11 @@ export const getAllCostumersWithGamas = async()=>{
                     product_code: requestsDetails.product_code 
                 }
                 continue
-            }
-            
+            }    
+         }
         */
-    }
-        
 
-    return AllCodeRequestsLength;
+    
     /*
     for(let i=0; i<client.length; i++){
         var {
@@ -450,7 +476,5 @@ export const getAllCostumersWithGamas = async()=>{
             city_employees: data.city
         }
         */
-        
-    }   
     
-
+}

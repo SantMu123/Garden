@@ -51,4 +51,4 @@ console.log(await getAllCostumersWithGamas())
 
 //console.log(await getAllRequest(5))
 
-//console.log(await getAllRequestDetails(1))
+//console.log(await getAllRequestDetails(25))

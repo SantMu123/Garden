@@ -5,13 +5,16 @@ export const getAllRequestDetails = async(code) =>{
     
     let nuevo = {
         code_request: undefined,
-        product_code: []
+        product_code: undefined
     };
+    let conjunto = new Set()
     if (data !== undefined && data.length > 0) {
         nuevo.code_request = data[0].code_request
         for (let i of data) {
-            nuevo.product_code.push(i.product_code);
+            let paso = conjunto.add(i.product_code.match(/^.{2}/)[0]);
+            nuevo.product_code = [...paso]
         }
+
     }
     return nuevo;
 }
