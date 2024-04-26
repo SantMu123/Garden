@@ -373,108 +373,21 @@ export const getAllCostumersWithGamas = async()=>{
         uniqueClients[i]["products"] = [...nuevo]
         nuevo = new Set()    
     }
-    
+    var uniqueInitials = new Set();
     for(let i = 0; i<uniqueClients.length; i++){
-        var uniqueInitials = new Set();
         // Recorrer el array de productos y agregar las iniciales al conjunto
-        uniqueClients.products.forEach(subArray => {
-            subArray.forEach(initial => {
-                uniqueInitials.add(initial);
-            });
+        uniqueClients[i].products.forEach(subArray => {
+            if(subArray === undefined){
+                return
+            }
+            for(let i of subArray){
+                uniqueInitials.add(i);
+            }
+            
         });
-        uniqueClients.products = Array.from(uniqueInitials);
+        
+        uniqueClients[i].products = [...uniqueInitials];
     }
     
     return uniqueClients;
-        
-        /*
-        var AllCodeRequestsLength = []
-        for(let i = 0; i<uniqueClients.length; i++){
-            AllCodeRequestsLength.push(uniqueClients[i].code_requests)
-            //lon = val.length
-           //AllCodeRequestsLength.push(val.length)
-        }
-        
-        /*
-        for(let i = 0; i<AllCodeRequestsLength.length; i++){
-            for(let j of AllCodeRequestsLength[i]){
-                let requestsDetails = await getAllRequestDetails(j)
-                uniqueClients[i] = {
-                    code_client: code_client.code_client,
-                    client_name: uniqueClients[i].contact_name,
-                    code_requests: code_client.codes_requests,
-                    product_code: requestsDetails.product_code 
-                }
-                continue
-            }    
-         }
-        */
-
-    
-    /*
-    for(let i=0; i<client.length; i++){
-        var {
-            id:id_client,
-            limit_credit,
-            postal_code:postal_code_client,
-            country:country_client,
-            region:region_client,
-            address2:address2_client,
-            address1:address1_client,
-            fax,
-            phone,
-            city,
-            code_employee_sales_manager,
-            ...clientUpdate} = client[i]
-            client[i] = clientUpdate
-        names.push(clientUpdate.client_name)
-        console.log(!names.some(val => val == client[i].client_name))
-        
-        /*if () {
-            nuevo.push(clientUpdate);
-        }
-        /*
-        let code_client = await getAllRequest(clientUpdate.client_code)
-        clientUpdate.client_code = code_client
-        otro.push(clientUpdate)
-        /*
-        let {
-            date_request,
-            date_wait,
-            date_delivery,
-            status,
-            comment,
-            id,
-            ...requestsUpdate
-        } = code_client
-        let requestsDetails = await getAllRequestDetails(requestsUpdate.code_request)
-        let {
-            quantity,
-            unit_price,
-            line_number,
-            id:id_request_details,
-            ...requestsDetailsUpdate
-        } = requestsDetails
-        let products = await getAllProducts(requestsDetailsUpdate.product_code)
-        let {
-            name,
-            dimension,
-            provider,
-            description,
-            stock,
-            price_sale,
-            price_provider,
-            id:id_products,
-            ...productsUpdate
-        } = products
-        var data = {...clientUpdate, ...requestsUpdate, ...requestsDetailsUpdate, ...productsUpdate}
-        /*
-        client[i] = {
-            client_name: `${data.client_name}`,
-            employees_full_name: `${data.name} ${data.lastname1} ${data.lastname2}`,
-            employees_office_code: data.code_office,
-            city_employees: data.city
-        }
-        */
-    
 }
