@@ -1,3 +1,4 @@
+//import {getAllClientsNotPayment} from "./clients"
 //7
 export const getAllPossibleStatus = async()=>{
     let res = await fetch("http://localhost:5508/requests")
@@ -71,7 +72,43 @@ export const getAllRejectedDeliverInYears = async()=>{
     return dataUpdate
 }
 
+//parte del 10 (Multitabla)
+export const getAllNotAtTimeDelivers = async() =>{
+    let res = await fetch(`http://localhost:5508/requests`)
+    let data = await res.json()
+    let dataUpdate = [];
+    let seenCodeClients = new Set();
+
+    data.forEach(val => {
+        if (new Date(val.date_delivery) > new Date(val.date_wait)) {
+            // Verificar si el code_client ya ha sido incluido
+            if (!seenCodeClients.has(val.code_client)) {
+                // Agregar el objeto al resultado y registrar el code_client
+                dataUpdate.push(val);
+                seenCodeClients.add(val.code_client);
+            }
+        }
+    });
+
+    return dataUpdate;
+}
 
 
+//parte 11 (multitabla)
 
+export const getAllRequest = async(code) =>{
+    let res = await fetch(`http://localhost:5508/requests?code_client=${code}`)
+    let data = await res.json()
+    let nuevo = {
+        code_client: undefined,
+        codes_requests: []
+    };
+    if (data !== undefined && data.length > 0) {
+        nuevo.code_client = data[0].code_client;
+        for (let i of data) {
+            nuevo.codes_requests.push(i.code_request);
+        }
+    }
+    return nuevo;
+}
 

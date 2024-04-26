@@ -42,3 +42,4 @@
 9. Devuelve un listado que muestre el nombre de cada empleados, el nombre de su jefe y el nombre del jefe de sus jefe.
 10. Devuelve el nombre de los clientes a los que no se les ha entregado a tiempo un pedido.
 11. Devuelve un listado de las diferentes gamas de producto que ha comprado cada cliente.
+
