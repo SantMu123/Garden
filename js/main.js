@@ -6,7 +6,7 @@ let name = await prompt("Ingrese el nombre: ");
 console.log(await postProfile(name));
 */
 import {getAllOficceAndCodeCity, getAllOficceCityAndMobile} from "./modulos/offices.js"
-import {getAllFullNameAndEmailsAndBoss, getBoss, getAllNotSalesRepresentEmployee} from "./modulos/employees.js"
+import {getAllFullNameAndEmailsAndBoss, getBoss, getAllNotSalesRepresentEmployee, getEmployeesAndBosses} from "./modulos/employees.js"
 import {getAllEspanishClients, getAll, getAllClientsWithSalesManagerName, getAllClientsWithPaymensAndSalesManagmentInfo, getAllAdressOfficesFunlabrada, getAllAdressNotAtTimeDeliverClients, getAllCostumersWithGamas} from "./modulos/clients.js"
 import {getAllPossibleStatus, getAllRejectedDeliver, getAllRejectedDeliverTwoDays, getAllRejectedDeliverInYears, getAllNotAtTimeDelivers,getAllRequest} from "./modulos/Request.js" //2009
 import {getAllClientsUniques, getAllPaymentsWays, getAllClientsWithNotPaymentsWithManagersSales} from "./modulos/payments.js"
@@ -47,8 +47,10 @@ import {getAllRequestDetails} from "./modulos/request_details.js"
 
 //console.log(await getAllNotAtTimeDelivers()) prueba
 
-console.log(await getAllCostumersWithGamas())
+//console.log(await getAllCostumersWithGamas()) //11 ejercicio multitabla
 
 //console.log(await getAllRequest(5))
 
 //console.log(await getAllRequestDetails(25))
+
+console.log(await getEmployeesAndBosses())

@@ -66,3 +66,30 @@ export const getEmployeesByIdCode = async (code) => {
     let data = await res.json(); 
     return data
 }
+
+//8 (multitabla)
+
+
+export const getEmployeesAndBosses = async () => {
+    let res2 = async (code) => {
+        let res = await fetch(`http://localhost:5502/employee?code_boss=${code}`);
+        let data = await res.json();
+        return data;
+    };
+    let res = await fetch(`http://localhost:5502/employee`);
+    let data = await res.json(); 
+    for(let i = 0; i<data.length; i++){
+        let {code_boss} = data[i]
+        let listBoss = []
+        if(!code_boss) continue
+        do{
+            let [boss] = await res2(code_boss)
+            code_boss = boss.code_boss
+            listBoss.push(boss)
+            console.log(listBoss)
+        }while(code_boss)
+        data[i].code_boss = listBoss
+    }
+    return ""
+};
+
