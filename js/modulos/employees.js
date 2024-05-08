@@ -53,12 +53,11 @@ export const getAllNotSalesRepresentEmployee = async () => {
 
 //obtener toda la informacion de un empleado por codigo
 
-export const getEmployeesByCode = async (code) => {
-    let res = await fetch(`http://localhost:5502/employee?employee_code=${code}`);
-    let data = await res.json(); 
-    return data
+export const getEmployeesByCode = async(code) =>{
+    let res = await fetch(`http://localhost:5502/employees?employee_code=${code}`);
+    let dataClients = await res.json();
+    return dataClients;
 }
-
 //Parte ejercicio 1:
 
 export const getEmployeesByIdCode = async (code) => {
