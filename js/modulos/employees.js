@@ -75,7 +75,7 @@ export const getEmployeesByIdCode = async (code) => {
     return data
 }
 
-//8 (multitabla)
+//8 (multitabla) //arreglar
 
 
 export const getEmployeesAndBosses = async () => {
@@ -98,7 +98,7 @@ export const getEmployeesAndBosses = async () => {
         }while(code_boss)
         data[i].code_boss = listBoss
     }
-    return ""
+    return data
 };
 
 // Consultas multitabla (Composición externa)
