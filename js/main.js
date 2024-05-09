@@ -6,10 +6,10 @@ let name = await prompt("Ingrese el nombre: ");
 console.log(await postProfile(name));
 */
 
-
+//getAllEspanishClients, getAll, getAllClientsWithSalesManagerName, getAllClientsWithPaymensAndSalesManagmentInfo, getAllAdressOfficesFunlabrada, getAllAdressNotAtTimeDeliverClients, getAllCostumersWithGamas, getClientsEmploy, 
 import {getAllOficceAndCodeCity, getAllOficceCityAndMobile} from "./modulos/offices.js"
 import {getAllFullNameAndEmailsAndBoss, getBoss, getAllNotSalesRepresentEmployee, getEmployeesAndBosses} from "./modulos/employees.js"
-import {getAllEspanishClients, getAll, getAllClientsWithSalesManagerName, getAllClientsWithPaymensAndSalesManagmentInfo, getAllAdressOfficesFunlabrada, getAllAdressNotAtTimeDeliverClients, getAllCostumersWithGamas, getClientsEmploy} from "./modulos/clients.js"
+import {getAllClientsFromSpainAndRepresentative11Or30} from "./modulos/clients.js"
 import {getAllPossibleStatus, getAllRejectedDeliver, getAllRejectedDeliverTwoDays, getAllRejectedDeliverInYears, getAllNotAtTimeDelivers,getAllRequest} from "./modulos/Request.js" //2009
 import {getAllClientsUniques, getAllPaymentsWays, getAllClientsWithNotPaymentsWithManagersSales} from "./modulos/payments.js"
 import {getAllOrnamentalsAndStockProducts} from "./modulos/product.js"
@@ -58,3 +58,5 @@ import {getAllRequestDetails} from "./modulos/request_details.js"
 //console.log(await getEmployeesAndBosses())
 
 //console.log(await getClientsEmploy())
+
+console.log(await getAllClientsFromSpainAndRepresentative11Or30())

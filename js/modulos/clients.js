@@ -1,10 +1,16 @@
 //6
-import {getEmployeesByCode} from "./employees.js"
+import {getEmployByCode} from "./employees.js"
 import {getOfficesByCode} from "./offices.js"
 //import {getAllCompletedPayments} from "./payments.js"
 //import {getAllNotAtTimeDelivers, getAllRequest} from "./Request.js"
 //import {getAllProducts} from "./product.js"
 //import {getAllRequestDetails} from "./request_details.js"
+
+export const getAllClients = async() =>{
+    let res = await fetch(`http://localhost:5501/clients`);
+    let data = await res.json();
+    return data;
+}
 
 // 7. Devuelve el nombre de los clientes y el nombre de sus representantes 
 // junto con la ciudad de la oficina a la que pertenece el representante.
@@ -29,7 +35,7 @@ export const getClientsEmploy = async() =>{
             ...clientsUpdate
         } = clients[i];
 
-        let [employ] = await getEmployeesByCode(clientsUpdate.code_employee_sales_manager)
+        let [employ] = await getEmployByCode(clientsUpdate.code_employee_sales_manager)
         let {
             extension,
             email,
@@ -96,17 +102,17 @@ export const getClientsEmploy = async() =>{
 
 //16
 
-// export const getAllClients = async()=>{
-//     let res = await fetch("http://localhost:5501/clients?city=Madrid")
-//     let data = await res.json()
-//     let dataUpdate = []
-//     data.forEach(val =>{
-//         if(val.code_employee_sales_manager == 11 || val.code_employee_sales_manager == 30){
-//             dataUpdate.push(val)
-//         }
-//     })
-//     return dataUpdate
-// } 
+export const getAllClientsFromSpainAndRepresentative11Or30 = async()=>{
+    let res = await fetch("http://localhost:5501/clients?city=Madrid")
+    let data = await res.json()
+    let dataUpdate = []
+    data.forEach(val =>{
+        if(val.code_employee_sales_manager == 11 || val.code_employee_sales_manager == 30){
+            dataUpdate.push(val)
+        }
+    })
+    return dataUpdate
+} 
 
 //7 (Consulta Multitabla) hay que hacer triple consulta
 
@@ -277,11 +283,11 @@ export const getClientsEmploy = async() =>{
 //} 
 
 //3 parte de (multitabla)
-// export const getAllClientsNotPayment = async(code) =>{
-//     let res = await fetch(`http://localhost:5501/clients?client_code=${code}`)
-//     let data = await res.json()
-//     return data;
-// }
+export const getAllClientsNotPayment = async(code) =>{
+     let res = await fetch(`http://localhost:5501/clients?client_code=${code}`)
+     let data = await res.json()
+     return data;
+}
 
 //6 (multitabla) Por medio del code_office se enlaza con employees.json y luego se
 // enlaza a clientes con employee_code - code_employee_sales_manager
